@@ -1,0 +1,49 @@
+<div class="col-md-12">
+    <mat-card class="login-mat-card mat-elevation-z8">
+        <mat-card-content>
+            <mat-card-header class="title_center">
+                <mat-card-title class="mat-card-title">Login</mat-card-title>
+                <mat-card-subtitle>Hello! Log in with your email.</mat-card-subtitle>
+            </mat-card-header>
+            <form *ngIf="!isLoggedIn"
+                  name="form"
+                  (ngSubmit)="f.form.valid && onSubmit()"
+                  #f="ngForm"
+                  novalidate>
+                <label class="form-label"> User Name: </label>
+                <mat-form-field>
+                    <input matInput name="username"
+                           required>
+                </mat-form-field>
+                <label class="form-label"> Password: </label>
+                <mat-form-field>
+                    <input matInput name="password"
+                           required
+                           minlength="6">
+                </mat-form-field>
+                <button mat-stroked-button>
+                    LOG IN
+                </button>
+
+                <section aria-label="Register" class="another-action">
+                Don't have an account?
+                <a routerlink="../register"
+                    class="text-link"
+                    href="./register">Register</a>
+                </section>
+
+                <div class="form-group">
+                    <div class="alert alert-danger"
+                         role="alert"
+                         *ngIf="f.submitted && isLoginFailed">
+                        Login failed: {{ errorMessage }}
+                    </div>
+                </div>
+            </form>
+
+            <div class="alert alert-success" *ngIf="isLoggedIn">
+                Logged in as {{ roles }}.
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

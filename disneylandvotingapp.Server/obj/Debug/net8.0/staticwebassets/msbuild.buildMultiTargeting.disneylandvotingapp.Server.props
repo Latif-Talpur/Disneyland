@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\disneylandvotingapp.Server.props" />
+</Project>
