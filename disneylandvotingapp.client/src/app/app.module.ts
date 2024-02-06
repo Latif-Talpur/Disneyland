@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PickerComponent } from './patron/picker.component';
-import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -35,12 +34,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppComponent,
     LoginComponent,
     PickerComponent,
-    ProfileComponent,
     BoardAdminComponent,
     RegisterComponent,
     MessageDialogComponent,
     ChangePasswordComponent
-    
+
   ],
   imports: [
     BrowserModule,

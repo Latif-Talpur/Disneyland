@@ -18,6 +18,7 @@ export class AppComponent {
   panelOpenState = false;
   isExpanded = true;
   showSubmenu: boolean = false;
+  showCharacterSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
 
@@ -54,28 +55,6 @@ export class AppComponent {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
-  }
-
-  toggleMenu() {
-    if (this.isMobile) {
-      this.sidenav.toggle();
-      this.isCollapsed = false;
-    } else {
-      this.sidenav.open();
-      this.isCollapsed = !this.isCollapsed;
-    }
-  }
-
-  mouseenter() {
-    if (!this.isExpanded) {
-      this.isShowing = true;
-    }
-  }
-
-  mouseleave() {
-    if (!this.isExpanded) {
-      this.isShowing = false;
-    }
   }
 
 }

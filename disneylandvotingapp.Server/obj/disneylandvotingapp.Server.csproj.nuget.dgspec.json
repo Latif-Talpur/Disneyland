@@ -1,27 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repo\\DisneyLand\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj": {}
+    "F:\\other-repos\\Disneyland\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj": {}
   },
   "projects": {
-    "D:\\repo\\DisneyLand\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj": {
+    "F:\\other-repos\\Disneyland\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repo\\DisneyLand\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj",
+        "projectUniqueName": "F:\\other-repos\\Disneyland\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj",
         "projectName": "disneylandvotingapp.Server",
-        "projectPath": "D:\\repo\\DisneyLand\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj",
-        "packagesPath": "C:\\Users\\LATIF\\.nuget\\packages\\",
-        "outputPath": "D:\\repo\\DisneyLand\\disneylandvotingapp.Server\\obj\\",
+        "projectPath": "F:\\other-repos\\Disneyland\\disneylandvotingapp.Server\\disneylandvotingapp.Server.csproj",
+        "packagesPath": "C:\\Users\\latif_saif\\.nuget\\packages\\",
+        "outputPath": "F:\\other-repos\\Disneyland\\disneylandvotingapp.Server\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\LATIF\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\latif_saif\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "X:\\NuGet": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,16 +43,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.SpaProxy": {
-              "target": "Package",
-              "version": "[8.*-*, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.4.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -60,15 +54,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
