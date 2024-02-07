@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +27,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { UserManagementComponent } from './user-management/user-management.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FormsComponent} from './user-management/userdetail'
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -39,7 +43,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
     RegisterComponent,
     MessageDialogComponent,
     ChangePasswordComponent,
-    UserManagementComponent
+    FormsComponent
 
   ],
   imports: [
@@ -63,7 +67,13 @@ import { UserManagementComponent } from './user-management/user-management.compo
     MatListModule,
     MatAccordion,
     MatExpansionModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
+    
   ],
   providers: [authInterceptorProviders, provideAnimationsAsync(),
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
