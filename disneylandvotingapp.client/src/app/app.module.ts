@@ -27,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BoardAdminComponent,
     RegisterComponent,
     MessageDialogComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    UserManagementComponent
 
   ],
   imports: [
