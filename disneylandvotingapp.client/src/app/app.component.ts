@@ -3,6 +3,7 @@ import { TokenStorageService } from './_services/token-storage.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -56,5 +57,8 @@ export class AppComponent {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
-
+  close():void{
+    this.sidenav.close();
+  }
+ 
 }

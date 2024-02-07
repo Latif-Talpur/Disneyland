@@ -1,2 +1,72 @@
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu">
+        <mat-icon mat-list-icon class="menu-mat-icon-left"
+          >supervisor_account</mat-icon
+        >
+        <span *ngIf="isExpanded || isShowing" class="span-mdc-list-item"
+          >User Management
+        </span>
+        <mat-icon
+          class="menu-button menu-mat-icon-right"
+          [ngClass]="{ rotated: showSubmenu }"
+          *ngIf="isExpanded || isShowing"
+          >expand_more</mat-icon
+        >
+      </mat-list-item>
 
-.vs/disneylandvotingapp/config/applicationhost.config
+      <mat-list-item (click)="showCharacterSubmenu = !showCharacterSubmenu">
+        <mat-icon mat-list-icon class="menu-mat-icon-left"
+          >supervised_user_circle</mat-icon
+        >
+        <span *ngIf="isExpanded || isShowing" class="span-mdc-list-item"
+          >Character Management
+        </span>
+        <mat-icon
+          class="menu-button menu-mat-icon-right"
+          [ngClass]="{ rotated: showCharacterSubmenu }"
+          *ngIf="isExpanded || isShowing"
+          >expand_more</mat-icon
+        >
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon class="menu-mat-icon-left"
+          >supervised_user_circle</mat-icon
+        >
+        <span *ngIf="isExpanded || isShowing" class="span-mdc-list-item"
+          >Reports</span
+        >
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu">
+        <mat-icon mat-list-icon class="menu-mat-icon-left"
+          >supervised_user_circle</mat-icon
+        >
+        <span *ngIf="isExpanded || isShowing" class="span-mdc-list-item"
+          >Change password</span
+        >
+      </mat-list-item>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showCharacterSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <a mat-list-item href="...">View Characters</a>
+        <a mat-list-item href="...">Add Character</a>
+        <a mat-list-item href="...">Update Character</a>
+      </div>
+      <div
+      class="submenu"
+      [ngClass]="{ expanded: showSubmenu }"
+      *ngIf="isShowing || isExpanded"
+    >
+      <a mat-list-item href="...">View User</a>
+      <a mat-list-item href="...">Add User</a>
+      <a mat-list-item href="...">Update User</a>
+    </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
