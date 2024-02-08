@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { Login } from '../models/login.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,28 +12,31 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form: any = {
-    username: null,
-    password: null
-  };
+  model: Login = { userid: "admin", password: "admin123" };
+  loginForm: FormGroup;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private formBuilder: FormBuilder,private router: Router, ) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+    this.loginForm = this.formBuilder.group({
+			userid: ['', Validators.required],
+			password: ['', Validators.required]
+		});
+
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
+    const { userid, password } = this.model;
 
-    this.authService.login(username, password).subscribe({
+    this.authService.login(userid, password).subscribe({
       next: data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);

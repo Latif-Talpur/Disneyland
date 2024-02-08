@@ -9,24 +9,23 @@
                   (ngSubmit)="f.form.valid && onSubmit()"
                   #f="ngForm"
                   novalidate>
-                <label class="form-label"> Full name: </label>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Full Name </mat-label>
                     <input class="input-width" matInput name="username" required>
                 </mat-form-field>
-
-                <label class="form-label"> Email: </label>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Email </mat-label>
                     <input class="input-width" matInput name="email"
                            required>
                 </mat-form-field>
-                <label class="form-label"> Password: </label>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Password </mat-label>
                     <input class="input-width" matInput name="password"
                            required
                            minlength="6">
                 </mat-form-field>
-                <label class="form-label"> Repeat Password: </label>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm Password</mat-label>
                     <input class="input-width" matInput name="repeatpassword"
                            required
                            minlength="6">

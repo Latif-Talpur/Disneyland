@@ -9,17 +9,22 @@
                   name="form"
                   (ngSubmit)="f.form.valid && onSubmit()"
                   #f="ngForm"
-                  novalidate>
-                <label class="form-label"> User Name: </label>
-                <mat-form-field>
-                    <input matInput name="username"
+                  novalidate [formGroup]="loginForm">
+                  <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput name="userid"
                            required>
+                <mat-error class="error-message" *ngIf="loginForm.get('userid')?.hasError('required') &&
+                (loginForm.get('userid')?.dirty || loginForm.get('userid')?.touched)">User name is
+            required</mat-error>
                 </mat-form-field>
-                <label class="form-label"> Password: </label>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
                     <input matInput name="password"
                            required
                            minlength="6">
+                           <mat-error class="error-message" *ngIf="loginForm.get('password')?.hasError('required') &&
+                           (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">Password field is empty</mat-error>
                 </mat-form-field>
                 <button mat-stroked-button>
                     LOG IN
