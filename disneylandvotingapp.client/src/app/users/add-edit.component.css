@@ -1,0 +1,27 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  .section-title {
+    margin-bottom: 10px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .half-width {
+    width: 20%;
+    margin-bottom: 15px;
+  }
+  
+  
+  .error-message {
+    font-size: 12px;
+  }
+  
+  .submit-btn {
+    margin-top: 20px;
+  }
+  

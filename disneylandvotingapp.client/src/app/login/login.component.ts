@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
-import { Login } from '../models/login.model';
 import { Router } from '@angular/router';
 
 
@@ -12,7 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  model: Login = { userid: "admin", password: "admin123" };
+
+  private login :{
+    userid: string;
+    password: string;
+  }
+
   loginForm: FormGroup;
   isLoggedIn = false;
   isLoginFailed = false;
@@ -34,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { userid, password } = this.model;
+    const { userid, password } = this.login
 
     this.authService.login(userid, password).subscribe({
       next: data => {

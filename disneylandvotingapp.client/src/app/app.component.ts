@@ -28,6 +28,7 @@ export class AppComponent {
 
   isMobile = true;
   isCollapsed = true;
+  title: any;
 
   constructor(private tokenStorageService: TokenStorageService, private observer: BreakpointObserver) { }
 

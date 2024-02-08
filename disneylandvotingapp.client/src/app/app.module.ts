@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PickerComponent } from './patron/picker.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DatePipe } from '@angular/common';
@@ -28,23 +27,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {FormsComponent} from './user-management/userdetail'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatNativeDateModule} from '@angular/material/core';
-
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PickerComponent,
-    BoardAdminComponent,
     RegisterComponent,
     MessageDialogComponent,
     ChangePasswordComponent,
-    FormsComponent
-
   ],
   imports: [
     BrowserModule,
@@ -76,7 +72,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     
   ],
   providers: [authInterceptorProviders, provideAnimationsAsync(),
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
