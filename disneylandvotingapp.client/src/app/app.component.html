@@ -22,10 +22,24 @@
         <mat-icon>add</mat-icon>
         Manage Characters
       </button>
-      <button mat-button (click)="close()" routerLink="users">
-        <mat-icon>add</mat-icon>
-        Manage Users
-      </button>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header class="expension-header-padding" [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+          <mat-panel-title>
+            <mat-icon class="material-icons">supervised_user_circle</mat-icon>
+          </mat-panel-title>
+          <mat-panel-description> Manage User </mat-panel-description>
+        </mat-expansion-panel-header>
+      <mat-nav-list>
+        <button mat-button (click)="close()" routerLink="users">
+          <mat-icon>preview</mat-icon>
+          View Users
+        </button>
+        <button mat-button (click)="close()" routerLink="users/add">
+          <mat-icon>add</mat-icon>
+          Add Users
+        </button>
+      </mat-nav-list>
+    </mat-expansion-panel> 
       <button mat-button (click)="close()">
         <mat-icon>analytics</mat-icon>
         Reports

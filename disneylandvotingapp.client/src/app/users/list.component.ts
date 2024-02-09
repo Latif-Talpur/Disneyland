@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { first } from 'rxjs/operators';
 import { UserService } from '../_services';
-import { UserDataSource } from '../_services/user.datasource';
+import { User } from '../_models/user';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
     styleUrls: ['./list.component.css'],
@@ -9,13 +9,19 @@ import { UserDataSource } from '../_services/user.datasource';
   })
 export class ListComponent implements OnInit {
     columnsToDisplay = ["Title","FirstName","LastName", "Email", "Role", 'Action'];
-
-    users: UserDataSource;
+    UserList: User[];
+    dataSource = new MatTableDataSource<User>();
 
     constructor(private userService: UserService) {
         const users$ = this.userService.getAll();
-        this.users = new UserDataSource(users$);
     }
     ngOnInit(): void {
+        this.userService.getAll().subscribe(
+          (data: User[]) => {
+            this.UserList = data
+            this.dataSource = new MatTableDataSource<any>(this.UserList);
+          }
+        );
     }
 }
+

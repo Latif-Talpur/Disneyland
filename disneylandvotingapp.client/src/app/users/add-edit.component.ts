@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 import { UserService, AlertService } from '../_services';
 import { MustMatch } from '../_helpers';
@@ -63,11 +63,6 @@ export class AddEditComponent implements OnInit {
 
         // reset alerts on submit
         this.alertService.clear();
-
-        // stop here if form is invalid
-        if (this.form.invalid) {
-            return;
-        }
 
         this.loading = true;
         if (this.isAddMode) {

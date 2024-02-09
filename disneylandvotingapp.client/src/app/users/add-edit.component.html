@@ -3,8 +3,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="half-width" appearance="outline">
         <mat-label>Title</mat-label>
-        <mat-select>
-            <mat-option value=""></mat-option>
+        <mat-select formControlName="title">
             <mat-option value="Mr">Mr</mat-option>
             <mat-option value="Mrs">Mrs</mat-option>
             <mat-option value="Miss">Miss</mat-option>
@@ -44,8 +43,7 @@
 
     <mat-form-field class="half-width" appearance="outline">
         <mat-label>Role</mat-label>
-        <mat-select>
-            <mat-option value=""></mat-option>
+        <mat-select formControlName="role">
             <mat-option value="User">User</mat-option>
             <mat-option value="Admin">Admin</mat-option>
         </mat-select>

@@ -7,7 +7,7 @@ import { Role } from '..//_models';
 
 // array in local storage for registered users
 const usersKey = 'angular-master-details-crud-example-users';
-let users = [{
+let users = JSON.parse(localStorage.getItem(usersKey)) || [{
     id: 1,
     title: 'Mr',
     firstName: 'Joe',

@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableDataSource} from '@angular/material/table';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
