@@ -1,0 +1,80 @@
+﻿<mat-card>
+  <mat-card-header>
+    <mat-card-title class= "mat-card-title-Without-text-align" >Users List</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <form class="full-width">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Search </mat-label>
+          <input matInput type="text" formControlName="firstName" required />
+          <button mat-button matSuffix aria-label="search" class="small-button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+      <div class="example-table-container div-border">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="align-middle mb-0 bg-white"
+      >
+        <ng-container matColumnDef="Title">
+          <mat-header-cell *matHeaderCellDef class="bg-light"
+            >Title</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row">
+            {{ row.title }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="FirstName">
+          <mat-header-cell *matHeaderCellDef class="bg-light"
+            >FirstName</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row">
+            {{ row.firstName }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="LastName">
+          <mat-header-cell *matHeaderCellDef class="bg-light"
+            >LastName</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row">
+            {{ row.lastName }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef class="bg-light"
+            >Email</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row">
+            {{ row.email }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Role">
+          <mat-header-cell *matHeaderCellDef class="bg-light"
+            >Role</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row">
+            {{ row.row }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+          <mat-header-cell *matHeaderCellDef class="bg-light"
+            >Action</mat-header-cell
+          >
+          <mat-cell mat-cell *matCellDef="let row">
+            <button mat-button routerLink="edit/{{ row.id }}">Edit</button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let element; columns: columnsToDisplay"></mat-row>
+      </table>
+      <mat-divider></mat-divider>
+      <mat-paginator
+        [length]="resultsLength"
+        [pageSize]="30"
+        aria-label="Select page of GitHub search results"
+      ></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

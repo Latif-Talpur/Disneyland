@@ -7,7 +7,8 @@ import { Role } from '..//_models';
 
 // array in local storage for registered users
 const usersKey = 'angular-master-details-crud-example-users';
-let users = JSON.parse(localStorage.getItem(usersKey)) || [{
+let users = JSON.parse(localStorage.getItem(usersKey)) || [
+  {
     id: 1,
     title: 'Mr',
     firstName: 'Joe',
@@ -15,7 +16,44 @@ let users = JSON.parse(localStorage.getItem(usersKey)) || [{
     email: 'joe@bloggs.com',
     role: Role.User,
     password: 'joe123'
-}];
+  },
+  {
+    id: 2,
+    title: 'Mr',
+    firstName: 'Joe',
+    lastName: 'Bloggs',
+    email: 'joe@bloggs.com',
+    role: Role.User,
+    password: 'joe123'
+  },
+  {
+    id: 3,
+    title: 'Mr',
+    firstName: 'Joe',
+    lastName: 'Bloggs',
+    email: 'joe@bloggs.com',
+    role: Role.User,
+    password: 'joe123'
+  },
+  {
+    id: 4,
+    title: 'Mr',
+    firstName: 'Joe',
+    lastName: 'Bloggs',
+    email: 'joe@bloggs.com',
+    role: Role.User,
+    password: 'joe123'
+  },
+  {
+    id: 5,
+    title: 'Mr',
+    firstName: 'Joe',
+    lastName: 'Bloggs',
+    email: 'joe@bloggs.com',
+    role: Role.User,
+    password: 'joe123'
+  }
+];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -39,7 +77,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
-            }    
+            }
         }
 
         // route functions

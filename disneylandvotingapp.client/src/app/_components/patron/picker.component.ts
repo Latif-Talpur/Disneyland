@@ -1,14 +1,14 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { MatTableDataSource} from '@angular/material/table';
-import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
+import { MessageDialogComponent } from '../notification/message-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
   selector: 'app-picker',
   styleUrls: ['./picker.component.css'],
-  templateUrl: './picker.component.html' 
+  templateUrl: './picker.component.html'
 })
 export class PickerComponent {
   constructor(public dialog: MatDialog) { }

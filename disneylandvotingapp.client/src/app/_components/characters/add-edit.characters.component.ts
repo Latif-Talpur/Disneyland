@@ -4,14 +4,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
-import { UserService, AlertService } from '../_services';
-import { MustMatch } from '../_helpers';
+import { UserService, AlertService } from '../../_services';
+import { MustMatch } from '../../_helpers';
 
 @Component({
-    templateUrl: 'add-edit.component.html',
-    styleUrls: ['add-edit.component.css']
+    templateUrl: 'add-edit.characters.component.html',
+    styleUrls: ['add-edit.characters.component.css']
   })
-export class AddEditComponent implements OnInit {
+export class AddEditCharactersComponent implements OnInit {
     form: FormGroup;
     id: string;
     isAddMode: boolean;
@@ -29,7 +29,7 @@ export class AddEditComponent implements OnInit {
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
         this.isAddMode = !this.id;
-        
+
         // password not required in edit mode
         const passwordValidators = [Validators.minLength(6)];
         if (this.isAddMode) {

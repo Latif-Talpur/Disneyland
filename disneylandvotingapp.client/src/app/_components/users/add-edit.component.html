@@ -1,0 +1,182 @@
+﻿<mat-card>
+  <mat-card-header>
+    <mat-card-title class="mat-card-title-Without-text-align" *ngIf="isAddMode"
+      >Add User Details</mat-card-title
+    >
+    <mat-card-title class="mat-card-title-Without-text-align" *ngIf="!isAddMode"
+      >Edit User Details</mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="half-width" appearance="outline">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+          <mat-option value="Mr">Mr</mat-option>
+          <mat-option value="Mrs">Mrs</mat-option>
+          <mat-option value="Miss">Miss</mat-option>
+          <mat-option value="Ms">Ms</mat-option>
+        </mat-select>
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('title')?.hasError('required') &&
+            (f.get('title')?.dirty || f.get('title')?.touched)
+          "
+          >Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-margin" appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="User">User</mat-option>
+          <mat-option value="Admin">Admin</mat-option>
+        </mat-select>
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('role')?.hasError('required') &&
+            (f.get('role')?.dirty || f.get('role')?.touched)
+          "
+          >Role is required
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" formControlName="firstName" required />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('firstName')?.hasError('required') &&
+            (f.get('firstName')?.dirty || f.get('firstName')?.touched)
+          "
+          >First Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" formControlName="lastName" required />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('lastName')?.hasError('required') &&
+            (f.get('lastName')?.dirty || f.get('lastName')?.touched)
+          "
+          >Last Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email </mat-label>
+        <input matInput type="email" formControlName="email" required />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('email')?.hasError('required') &&
+            (f.get('email')?.dirty || f.get('email')?.touched)
+          "
+          >Email is required</mat-error
+        >
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('email')?.hasError('pattern') &&
+            (f.get('email')?.dirty || f.get('email')?.touched)
+          "
+          >Enter a valid email</mat-error
+        >
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width" appearance="outline" *ngIf="isAddMode">
+        <mat-label>Password </mat-label>
+        <input matInput type="password" formControlName="password" required />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('password').hasError('required') &&
+            (f.get('password').dirty || f.get('password').touched)
+          "
+          >Password is required</mat-error
+        >
+
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('password').hasError('minlength') &&
+            (f.get('password').dirty || f.get('password').touched)
+          "
+          >Password must be at least 5 characters long</mat-error
+        >
+
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('password').hasError('pattern') &&
+            (f.get('password').dirty || f.get('password').touched)
+          "
+          >Your password must contain at least one uppercase, one lowercase, and
+          one number</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline" *ngIf="isAddMode">
+        <mat-label>Confirm Password </mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="confirmPassword"
+          required
+        />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('confirmPassword').hasError('required') &&
+            (f.get('confirmPassword').dirty || f.get('confirmPassword').touched)
+          "
+          >Password is required</mat-error
+        >
+
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('confirmPassword').hasError('minlength') &&
+            (f.get('confirmPassword').dirty || f.get('confirmPassword').touched)
+          "
+          >Password must be at least 5 characters long</mat-error
+        >
+
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('confirmPassword').hasError('pattern') &&
+            (f.get('confirmPassword').dirty || f.get('confirmPassword').touched)
+          "
+          >Your password must contain at least one uppercase, one lowercase, and
+          one number</mat-error
+        >
+      </mat-form-field>
+      <div class="example-button-row">
+        <button
+          [disabled]="loading"
+          class="half-width"
+          mat-raised-button
+          type="submit"
+        >
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Save
+        </button>
+        <button mat-raised-button routerLink="/users" class="half-width">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

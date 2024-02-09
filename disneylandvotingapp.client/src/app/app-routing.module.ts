@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { PickerComponent } from './patron/picker.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
+import { RegisterComponent } from './_components/users/register/register.component';
+import { LoginComponent } from './_components/login/login.component';
+import { PickerComponent } from './_components/patron/picker.component';
+import { ChangePasswordComponent } from './_components/users/password-change/change-password.component';
+const usersModule = () => import('./_components/users/users.module').then(x => x.UsersModule);
 const routes: Routes = [
   { path: 'home', component: PickerComponent },
   { path: 'login', component: LoginComponent },

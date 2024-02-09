@@ -1,28 +1,33 @@
 .container {
     margin-top: 50px;
-    
+
   }
-  
+
   .section-title {
     margin-bottom: 10px;
   }
-  
+
   .full-width {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .half-width {
     width: 20%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
-  
-  
+
+
+  .half-width-margin{
+    width: 20%;
+    margin-bottom: 10px;
+    margin-left: 10px !important;
+  }
+
   .error-message {
     font-size: 12px;
   }
-  
+
   .submit-btn {
     margin-top: 20px;
   }
-  

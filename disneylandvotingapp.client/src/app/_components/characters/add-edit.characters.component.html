@@ -1,0 +1,39 @@
+﻿<mat-card>
+  <mat-card-header>
+    <mat-card-title class="mat-card-title-Without-text-align" *ngIf="isAddMode"
+      >Add Character Details</mat-card-title
+    >
+    <mat-card-title class="mat-card-title-Without-text-align" *ngIf="!isAddMode"
+      >Edit Character Details</mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" required />
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline" *ngIf="isAddMode">
+        <mat-label>Browse File </mat-label>
+        <input matInput type="file" class="file-upload" onchange="console.log(event.target.files)">
+      </mat-form-field>
+      <div class="example-button-row">
+        <button
+          [disabled]="loading"
+          class="half-width"
+          mat-raised-button
+          type="submit"
+        >
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Save
+        </button>
+        <button mat-raised-button routerLink="/users" class="half-width">
+          Cancel
+        </button>
+      </div>
+
+  </mat-card-content>
+</mat-card>
