@@ -2,6 +2,7 @@
 import { UserService } from '../../_services';
 import { User } from '../../_models/user';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable, Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 @Component({
     styleUrls: ['./list.component.css'],
@@ -11,10 +12,11 @@ export class ListComponent implements OnInit {
     columnsToDisplay = ["Title","FirstName","LastName", "Email", "Role", 'Action'];
     UserList: User[];
     dataSource = new MatTableDataSource<User>();
-      resultsLength: unknown;
+    resultsLength: number;
+    users$!: Observable<User[]>;
+    private searchTerms = new Subject<string>();
 
     constructor(private userService: UserService) {
-        const users$ = this.userService.getAll();
     }
     ngOnInit(): void {
         this.userService.getAll().subscribe(
@@ -24,6 +26,14 @@ export class ListComponent implements OnInit {
             this.dataSource = new MatTableDataSource<any>(this.UserList);
           }
         );
+        this.users$ = this.searchTerms.pipe(
+          debounceTime(300),
+          distinctUntilChanged(),
+          switchMap((term: string) => this.userService.searchUsers(term)),
+        );
     }
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
 }
 

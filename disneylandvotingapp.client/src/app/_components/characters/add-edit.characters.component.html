@@ -8,14 +8,32 @@
     >
   </mat-card-header>
   <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput type="text" formControlName="name" required />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('name')?.hasError('required') &&
+            (f.get('name')?.dirty || f.get('name')?.touched)
+          "
+          >Character Name is required
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="full-width" appearance="outline" *ngIf="isAddMode">
-        <mat-label>Browse File </mat-label>
-        <input matInput type="file" class="file-upload" onchange="console.log(event.target.files)">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Character Picture URL</mat-label>
+        <input matInput type="text" formControlName="pictureUrl" required />
+        <mat-error
+          class="error-message"
+          *ngIf="
+            f.get('pictureUrl')?.hasError('required') &&
+            (f.get('pictureUrl')?.dirty || f.get('pictureUrl')?.touched)
+          "
+          >Character picture URL is required
+        </mat-error>
       </mat-form-field>
       <div class="example-button-row">
         <button
@@ -30,10 +48,10 @@
           ></span>
           Save
         </button>
-        <button mat-raised-button routerLink="/users" class="half-width">
+        <button mat-raised-button routerLink="/characters" class="half-width">
           Cancel
         </button>
       </div>
-
+    </form>
   </mat-card-content>
 </mat-card>

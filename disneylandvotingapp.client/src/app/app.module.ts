@@ -30,7 +30,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatNativeDateModule} from '@angular/material/core';
 import { fakeBackendProvider } from './_helpers';
-import {AlertComponent} from '../app/_components/alerts';
+import { CharacterPopularityReportComponent } from './_components/character-popularity-report/character-popularity-report.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,7 @@ import {AlertComponent} from '../app/_components/alerts';
     RegisterComponent,
     MessageDialogComponent,
     ChangePasswordComponent,
-    AlertComponent
+    CharacterPopularityReportComponent
   ],
   imports: [
     BrowserModule,
@@ -67,8 +70,15 @@ import {AlertComponent} from '../app/_components/alerts';
     MatDatepickerModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    NgChartsModule,
+    ToastrModule.forRoot(
+      {timeOut: 3000,
+          preventDuplicates: true,
+          maxOpened: 1,
+          autoDismiss: true,
+          enableHtml: true},
+  ),
   ],
   providers: [authInterceptorProviders, provideAnimationsAsync(),
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },

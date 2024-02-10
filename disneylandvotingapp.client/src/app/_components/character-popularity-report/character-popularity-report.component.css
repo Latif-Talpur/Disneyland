@@ -1,0 +1,42 @@
+.container {
+    margin-top: 50px;
+
+  }
+
+  .section-title {
+    margin-bottom: 10px;
+  }
+
+  .half-width-margin{
+    width: 15%;
+    margin-bottom: 5px;
+    margin-left: 10px !important;
+  }
+
+
+  .half-width-60{
+    width: 20% !important;
+    margin-left: 10px !important;
+  }
+
+  .error-message {
+    font-size: 12px;
+  }
+
+  .report-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .report-container mat-form-field {
+    width: 220px;
+  }
+   
+  .report-form-fields {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .formFieldWidth480 .mat-form-field-infix {
+    width: 480px !important;
+ }
+

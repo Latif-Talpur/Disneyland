@@ -11,11 +11,19 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './picker.component.html'
 })
 export class PickerComponent {
-  constructor(public dialog: MatDialog) { }
+  resultsLength;
+  selection: SelectionModel<PeriodicElement>;
+  dataSource: any;
+  displayedColumns: any;
+  constructor(public dialog: MatDialog) { 
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'select'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+    this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'select'];
+    this.resultsLength = ELEMENT_DATA.length;
+    this.dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    this.selection = new SelectionModel<PeriodicElement>(true, []);
+  }
+
+ 
 
   openDialog() {
     this.dialog.open(MessageDialogComponent);

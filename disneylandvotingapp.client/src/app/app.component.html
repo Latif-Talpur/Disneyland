@@ -26,13 +26,13 @@
           <mat-panel-description> Manage Character </mat-panel-description>
         </mat-expansion-panel-header>
       <mat-nav-list>
-        <button mat-button (click)="close()" routerLink="users">
-          <mat-icon>preview</mat-icon>
-          View Users
-        </button>
-        <button mat-button (click)="close()" routerLink="users/add">
+        <button mat-button (click)="close()" routerLink="characters/add">
           <mat-icon>add</mat-icon>
-          Add Users
+          Add Character
+        </button>
+        <button mat-button (click)="close()" routerLink="characters">
+          <mat-icon>preview</mat-icon>
+          View Character
         </button>
       </mat-nav-list>
     </mat-expansion-panel>
@@ -44,17 +44,17 @@
           <mat-panel-description> Manage User </mat-panel-description>
         </mat-expansion-panel-header>
       <mat-nav-list>
-        <button mat-button (click)="close()" routerLink="users">
-          <mat-icon>preview</mat-icon>
-          View Users
-        </button>
         <button mat-button (click)="close()" routerLink="users/add">
           <mat-icon>add</mat-icon>
           Add Users
         </button>
+        <button mat-button (click)="close()" routerLink="users">
+          <mat-icon>preview</mat-icon>
+          View Users
+        </button>
       </mat-nav-list>
     </mat-expansion-panel>
-      <button mat-button (click)="close()">
+      <button mat-button routerLink="report" (click)="close()">
         <mat-icon>analytics</mat-icon>
         Reports
       </button>

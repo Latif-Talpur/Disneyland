@@ -2,103 +2,86 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
-
-import { UserService, AlertService } from '../../_services';
-import { MustMatch } from '../../_helpers';
+import { CharacterService } from '../../_services/character.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    templateUrl: 'add-edit.characters.component.html',
-    styleUrls: ['add-edit.characters.component.css']
-  })
+  templateUrl: 'add-edit.characters.component.html',
+  styleUrls: ['add-edit.characters.component.css']
+})
 export class AddEditCharactersComponent implements OnInit {
-    form: FormGroup;
-    id: string;
-    isAddMode: boolean;
-    loading = false;
-    submitted = false;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private userService: UserService,
-        private alertService: AlertService
-    ) {}
+  form: FormGroup;
+  id: string;
+  isAddMode: boolean;
+  loading = false;
+  submitted = false;
 
-    ngOnInit() {
-        this.id = this.route.snapshot.params['id'];
-        this.isAddMode = !this.id;
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private characterService: CharacterService,
+    private toastrService: ToastrService
+  ) { }
 
-        // password not required in edit mode
-        const passwordValidators = [Validators.minLength(6)];
-        if (this.isAddMode) {
-            passwordValidators.push(Validators.required);
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      pictureUrl: ['', Validators.required],
+    });
+
+    if (!this.isAddMode) {
+      this.characterService.getById(this.id)
+        .pipe(first())
+        .subscribe(x => this.form.patchValue(x));
+    }
+  }
+
+  // convenience getter for easy access to form fields
+  public get f() { return this.form; }
+
+  onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    if (this.isAddMode) {
+      this.AddCharacter();
+    } else {
+      this.updateCharacter();
+    }
+  }
+
+  private AddCharacter() {
+    this.characterService.create(this.form.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.toastrService.success('Character added');
+          this.router.navigate(['../'], { relativeTo: this.route });
+        },
+        error: error => {
+           this.toastrService.error(error);
+          this.loading = false;
         }
+      });
+  }
 
-        this.form = this.formBuilder.group({
-            title: ['', Validators.required],
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            role: ['', Validators.required],
-            password: ['', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
-            confirmPassword: ['', this.isAddMode ? Validators.required : Validators.nullValidator]
-        }, {
-            validator: MustMatch('password', 'confirmPassword')
-        });
-
-        if (!this.isAddMode) {
-            this.userService.getById(this.id)
-                .pipe(first())
-                .subscribe(x => this.form.patchValue(x));
+  private updateCharacter() {
+    this.characterService.update(this.id, this.form.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.toastrService.success('Character updated');
+          this.router.navigate(['../../'], { relativeTo: this.route });
+        },
+        error: error => {
+          this.toastrService.error(error);
+          this.loading = false;
         }
-    }
-
-    // convenience getter for easy access to form fields
-    public get f() { return this.form; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // reset alerts on submit
-        this.alertService.clear();
-
-        this.loading = true;
-        if (this.isAddMode) {
-            this.createUser();
-        } else {
-            this.updateUser();
-        }
-    }
-
-    private createUser() {
-        this.userService.create(this.form.value)
-            .pipe(first())
-            .subscribe({
-                next: () => {
-                    this.alertService.success('User added', { keepAfterRouteChange: true });
-                    this.router.navigate(['../'], { relativeTo: this.route });
-                },
-                error: error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            });
-    }
-
-    private updateUser() {
-        this.userService.update(this.id, this.form.value)
-            .pipe(first())
-            .subscribe({
-                next: () => {
-                    this.alertService.success('User updated', { keepAfterRouteChange: true });
-                    this.router.navigate(['../../'], { relativeTo: this.route });
-                },
-                error: error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            });
-    }
+      });
+  }
 }
+
+

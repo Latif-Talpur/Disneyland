@@ -2,10 +2,9 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
-
-import { UserService, AlertService } from '../../_services';
+import { UserService } from '../../_services';
 import { MustMatch } from '../../_helpers';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     templateUrl: 'add-edit.component.html',
@@ -23,7 +22,7 @@ export class AddEditComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private userService: UserService,
-        private alertService: AlertService
+        private toastrService: ToastrService
     ) {}
 
     ngOnInit() {
@@ -60,10 +59,6 @@ export class AddEditComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
-        // reset alerts on submit
-        this.alertService.clear();
-
         this.loading = true;
         if (this.isAddMode) {
             this.createUser();
@@ -77,11 +72,11 @@ export class AddEditComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.alertService.success('User added', { keepAfterRouteChange: true });
+                    this.toastrService.success('User added');
                     this.router.navigate(['../'], { relativeTo: this.route });
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this.toastrService.error(error);
                     this.loading = false;
                 }
             });
@@ -92,11 +87,11 @@ export class AddEditComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.alertService.success('User updated', { keepAfterRouteChange: true });
+                    this.toastrService.success('User updated');
                     this.router.navigate(['../../'], { relativeTo: this.route });
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this.toastrService.error(error);
                     this.loading = false;
                 }
             });
