@@ -1,4 +1,4 @@
-﻿<mat-card>
+<mat-card>
   <mat-card-header>
     <mat-card-title class= "mat-card-title-Without-text-align" >Characters List</mat-card-title>
   </mat-card-header>
@@ -6,7 +6,7 @@
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Search </mat-label>
       <input matInput #searchBox id="search-box" />
-      <button mat-button matSuffix aria-label="search" class="small-button" onclick="search(searchBox.value)">
+      <button mat-button matSuffix aria-label="search" class="small-button" (click)="search(searchBox.value)">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>

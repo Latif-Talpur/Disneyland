@@ -1,0 +1,47 @@
+<!-- <ng-container *ngIf="isTable; else canvasTemplate">
+    <mat-table [dataSource]="dataSource" class="align-middle mb-0 bg-white" >
+      <ng-container matColumnDef="ID">
+        <mat-header-cell *matHeaderCellDef class="bg-light"> Id</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.Id}} </mat-cell>
+    </ng-container>
+      <ng-container matColumnDef="Name">
+          <mat-header-cell *matHeaderCellDef class="bg-light"> Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Picture">
+          <mat-header-cell *matHeaderCellDef class="bg-light">Picture</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.pictureUrl}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Votes">
+          <mat-header-cell *matHeaderCellDef class="bg-light">Votes</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.Votes}} </mat-cell>
+      </ng-container>
+      <mat-header-row mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row mat-row *matRowDef="let row; columns: columnsToDisplay;">
+      </mat-row>
+  </mat-table>
+  </ng-container>
+  <ng-template #canvasTemplate>
+    <div class="col-6">
+      <canvas baseChart 
+      class="chart"
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [type]="lineChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"
+    >
+  </canvas>
+    </div>
+    <div class="col-6">
+      <canvas baseChart 
+        class="chart"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      >
+    </canvas>
+    </div>
+  </ng-template> -->

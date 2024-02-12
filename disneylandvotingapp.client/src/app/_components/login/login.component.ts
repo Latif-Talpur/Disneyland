@@ -12,11 +12,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private login :{
-    userid: string;
-    password: string;
-  }
-
   loginForm: FormGroup;
   isLoggedIn = false;
   isLoginFailed = false;
@@ -38,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { userid, password } = this.login
+    const { userid, password } = this.loginForm.value
 
     this.authService.login(userid, password).subscribe({
       next: data => {

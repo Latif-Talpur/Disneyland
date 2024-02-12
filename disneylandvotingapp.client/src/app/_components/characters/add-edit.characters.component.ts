@@ -40,7 +40,7 @@ export class AddEditCharactersComponent implements OnInit {
     }
   }
 
-  // convenience getter for easy access to form fields
+
   public get f() { return this.form; }
 
   onSubmit() {
@@ -62,7 +62,7 @@ export class AddEditCharactersComponent implements OnInit {
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: error => {
-           this.toastrService.error(error);
+           this.toastrService.error(error.message);
           this.loading = false;
         }
       });
@@ -77,7 +77,7 @@ export class AddEditCharactersComponent implements OnInit {
           this.router.navigate(['../../'], { relativeTo: this.route });
         },
         error: error => {
-          this.toastrService.error(error);
+          this.toastrService.error(error.message);
           this.loading = false;
         }
       });

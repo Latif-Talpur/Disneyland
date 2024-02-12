@@ -1,63 +1,32 @@
-<div class="p-4">
 <mat-card>
   <mat-card-header>
-    <mat-card-title class="mat-card-title-Without-text-align">Character Popularity Report</mat-card-title>
+    <mat-card-title>Character Popularity Report</mat-card-title>
   </mat-card-header>
+  <mat-action-list>
+    <mat-toolbar class="secondary-toolbar">
+      <button  mat-button (click)="getCharactervotes()" aria-label="Get Character Votes">
+        Character Report 
+      </button>
+      <button  mat-button (click)="getCharactervotes()" aria-label="Get Character Votes">
+        Characters Report 
+      </button>
+      <button  mat-button (click)="getVotesReport()" aria-label="Votes Report ">
+        Votes Report
+      </button>
+      <button  mat-button (click)="TopFiveCharacter()" aria-label=" Top Characters">
+        Top Characters
+      </button>
+      <button  mat-button (click)="getMostPopularCharactersInMorning()" aria-label="Most Popular Morning Characters">
+        Morning Characters
+      </button>
+      <button  mat-button (click)="getMostPopularCharactersInAfternoon()" aria-label="Most Popular Evening Characters">
+        Evening Characters
+      </button>
+    </mat-toolbar>
+  </mat-action-list>
   <mat-card-content>
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <mat-card-subtitle >
-          Character Report Options
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-      <div class="report-container">
-        <mat-form-field appearance="outline" class="half-width-60">
-          <mat-label>Select Period:</mat-label>
-          <input matInput type="text" [(ngModel)]="selectedPeriod" placeholder="YYYY-MM-DD">
-        </mat-form-field>
-        <mat-form-field  appearance="outline" class="half-width-60">
-          <mat-label>Select Characters: </mat-label>
-          <mat-select multiple [(ngModel)]="selectedCharacters">
-          </mat-select>
-        </mat-form-field>
-      </div>
-        <div class="report-container">
-        <button class="half-width-margin" mat-raised-button (click)="applyFilters()">
-          Apply Filters
-        </button>
-        <button mat-raised-button routerLink="/home" class="half-width-margin">
-          Cancel
-        </button>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-divider> </mat-divider>  
-  <div class="row">
-    <div class="col-6">
-      <canvas baseChart 
-      class="chart"
-      [data]="lineChartData"
-      [options]="lineChartOptions"
-      [type]="lineChartType"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)"
-    >
-  </canvas>
-    </div>
-    <div class="col-6">
-      <canvas baseChart 
-        class="chart"
-        [data]="lineChartData"
-        [options]="lineChartOptions"
-        [type]="lineChartType"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"
-      >
-    </canvas>
-    </div>
+  <div class="container col-6">
+     <router-outlet></router-outlet>
   </div>
 </mat-card-content>
 </mat-card>
-</div>
-

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Role } from '../_models';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -32,7 +34,14 @@ export class TokenStorageService {
     if (user) {
       return JSON.parse(user);
     }
-
     return {};
+  }
+
+  public getUserRole():  Observable<Role>
+  {
+    if(this.getUser() ===null)
+      return of(Role.Default); 
+    
+    return of(this.getUser().roles); 
   }
 }

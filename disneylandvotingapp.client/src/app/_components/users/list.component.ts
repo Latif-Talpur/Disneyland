@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
         );
     }
   search(term: string): void {
-    this.searchTerms.next(term);
+    this.dataSource.filter = term.trim().toLowerCase();
   }
 }
 

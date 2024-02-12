@@ -6,7 +6,7 @@
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Search </mat-label>
           <input matInput #searchBox id="search-box" />
-          <button mat-button matSuffix aria-label="search" class="small-button" onclick="search(searchBox.value)">
+          <button mat-button matSuffix aria-label="search" class="small-button" (click)="search(searchBox.value)">
             <mat-icon>search</mat-icon>
           </button>
         </mat-form-field>
@@ -52,7 +52,7 @@
             >Role</mat-header-cell
           >
           <mat-cell *matCellDef="let row">
-            {{ row.row }}
+            {{ row.role }}
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Action">
@@ -70,7 +70,6 @@
       <mat-paginator
         [length]="resultsLength"
         [pageSize]="30"
-        aria-label="Select page of GitHub search results"
       ></mat-paginator>
     </div>
   </mat-card-content>

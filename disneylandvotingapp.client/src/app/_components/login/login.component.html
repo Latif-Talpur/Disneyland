@@ -7,12 +7,12 @@
             </mat-card-header>
             <form *ngIf="!isLoggedIn"
                   name="form"
-                  (ngSubmit)="f.form.valid && onSubmit()"
+                  (ngSubmit)="onSubmit()"
                   #f="ngForm"
                   novalidate [formGroup]="loginForm">
                   <mat-form-field appearance="outline">
                     <mat-label>User Name</mat-label>
-                    <input matInput name="userid"
+                    <input matInput name="userid" formControlName="userid"
                            required>
                 <mat-error class="error-message" *ngIf="loginForm.get('userid')?.hasError('required') &&
                 (loginForm.get('userid')?.dirty || loginForm.get('userid')?.touched)">User name is
@@ -20,7 +20,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                   <mat-label>Password</mat-label>
-                    <input matInput name="password"
+                    <input matInput name="password" formControlName="password"
                            required
                            minlength="6">
                            <mat-error class="error-message" *ngIf="loginForm.get('password')?.hasError('required') &&

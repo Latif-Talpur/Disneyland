@@ -32,5 +32,9 @@ export class ListCharactersComponent implements OnInit {
           switchMap((term: string) => this.characterservice.searchCharacters(term)),
         );
     }
+
+    search(term: string): void {
+      this.dataSource.filter = term.trim().toLowerCase();
+    }
 }
 

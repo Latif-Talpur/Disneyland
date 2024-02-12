@@ -1,33 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const AUTH_API = 'https://localhost:7261/api/auth/';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+const AUTH_API = `${environment.apiUrl}/api/auth`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-
   login(username: string, password: string): Observable<any> {
+  const data = 
+    { 
+       'username': username, 
+       'password': password, 
+    };
 
-   
-    return this.http.post(AUTH_API + 'signin', {
-      username,
-      password
-    }, httpOptions);
+    return this.http.post(AUTH_API + '/signin', data);
   }
 
-  register(username: string, email: string, password: string, role: string): Observable<any> {
+  register(username: string, email: string, password: string, role: string ,confirmpassword:string): Observable<any> {
 
-    const data = {'username': username, 'email': email ,'password': password, "roles": role};
-    const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+    const data = 
+    { 
+       'firstname': username, 
+       'email': email, 
+       'password': password, 
+       "role": role,
+       "title" :"",
+        "lastname" :username,
+        "confirmpassword": confirmpassword
+      };
 
-    return this.http.post(AUTH_API + 'signup', {'username': username, 'email': email ,'password': password, "roles": role}, config);
+    return this.http.post(AUTH_API + '/signup', data);
   }
 }

@@ -1,11 +1,14 @@
 // character-popularity-report.component.ts
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Chart, ChartDataset, ChartOptions } from 'chart.js';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import Annotation from 'chartjs-plugin-annotation';
+import { VoteService } from '../../_services/vote.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { CharacterPopularity } from '../../_models/characterpopularity';
 
 @Component({
   selector: 'app-character-popularity-report',
@@ -13,18 +16,52 @@ import Annotation from 'chartjs-plugin-annotation';
   styleUrls: ['./character-popularity-report.component.css']
 })
 export class CharacterPopularityReportComponent  {
+
+
+  getCharactervotes() {
+throw new Error('Method not implemented.');
+}
+
+  getMostPopularCharactersInAfternoon() {
+    throw new Error('Method not implemented.');
+}
+getMostPopularCharactersInMorning() {
+throw new Error('Method not implemented.');
+}
+getVotesReport() {
+throw new Error('Method not implemented.');
+}
+
+
+
   private newLabel? = 'New label';
-    // Other variables for filtering
+    
     public selectedPeriod: string;
     public selectedCharacters: string[] = [];
+    dataSource = new MatTableDataSource<CharacterPopularity>();
+    @Input() isTable: boolean = false;
+    resultsLength: number;
 
-  constructor() {
+    columnsToDisplay = ["ID","Name", "Picture", "Votes"];
+    CharacterList: CharacterPopularity[];
+
+  constructor(private voterservice:VoteService) {
     Chart.register(Annotation);
   }
 
   public applyFilters(): void {
-    // Fetch data based on selectedPeriod and selectedCharacters
-    // Update the chart data accordingly
+    this.isTable= false;
+  }
+
+  TopFiveCharacter() {
+    this.isTable= true;
+    this.voterservice.getTop5Characters().subscribe(
+      (data: CharacterPopularity[]) => {
+        this.CharacterList = data
+        this.resultsLength = this.CharacterList.length;
+        this.dataSource = new MatTableDataSource<any>(this.CharacterList);
+      }
+    );
   }
 
   public lineChartData: ChartConfiguration['data'] = {

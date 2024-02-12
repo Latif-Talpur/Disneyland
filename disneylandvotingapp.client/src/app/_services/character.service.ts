@@ -6,8 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { catchError, of, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
-const baseUrl = `${environment.apiUrl}/characters`;
-
+const baseUrl = `${environment.apiUrl}/api/characters`;
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +15,7 @@ export class CharacterService {
   constructor(private http: HttpClient, private toastrService: ToastrService) { }
 
   getAll(): Observable<any> {
-    return this.http.get<Character[]>(baseUrl);
+    return this.http.get<Character[]>(`${baseUrl}/all`);
 }
 
 
@@ -30,10 +29,6 @@ create(params) {
 
 update(id: string, params) {
     return this.http.put(`${baseUrl}/${id}`, params);
-}
-
-delete(id: string) {
-    return this.http.delete(`${baseUrl}/${id}`);
 }
 
 searchCharacters(term: string): Observable<Character[]> {

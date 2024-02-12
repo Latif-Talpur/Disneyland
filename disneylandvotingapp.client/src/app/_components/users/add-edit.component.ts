@@ -41,11 +41,9 @@ export class AddEditComponent implements OnInit {
             lastName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             role: ['', Validators.required],
-            password: ['', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
+            password: ['', Validators.compose([Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator])],
             confirmPassword: ['', this.isAddMode ? Validators.required : Validators.nullValidator]
-        }, {
-            validator: MustMatch('password', 'confirmPassword')
-        });
+        }, { validator: MustMatch});
 
         if (!this.isAddMode) {
             this.userService.getById(this.id)
@@ -76,7 +74,7 @@ export class AddEditComponent implements OnInit {
                     this.router.navigate(['../'], { relativeTo: this.route });
                 },
                 error: error => {
-                    this.toastrService.error(error);
+                    this.toastrService.error(error.message);
                     this.loading = false;
                 }
             });
@@ -91,7 +89,7 @@ export class AddEditComponent implements OnInit {
                     this.router.navigate(['../../'], { relativeTo: this.route });
                 },
                 error: error => {
-                    this.toastrService.error(error);
+                    this.toastrService.error(error.message);
                     this.loading = false;
                 }
             });
